@@ -37,16 +37,27 @@ public class Sudoku extends Application{
 			pos[0]=(int)(e.getX()/width*9);
 			pos[1]=(int)(e.getY()/height*9);
 		});
-		
-		
+
+
 		scene.setOnKeyPressed(e->{
 			int val=0;
+			if(e.getCode().toString().contains("ESCAPE"))
+				primaryStage.close();
+			if(e.getCode().toString().contains("SPACE")){
+				primaryStage.close();
+				try {
+					new Sudoku().start(new Stage());
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}
+			}
 			try{
 				val=Integer.parseInt(e.getCode().toString().substring(e.getCode().toString().length()-1));
 			}catch( NumberFormatException ex){
 				//ex.printStackTrace();
 			}
-			grid.set(val, pos[0], pos[1]);
+			if(val!=0)
+				grid.set(val, pos[0], pos[1]);
 
 		});
 
@@ -54,6 +65,7 @@ public class Sudoku extends Application{
 		{
 			public void handle(long currentNanoTime){
 				gc.clearRect(0, 0, width, height);
+				grid.highLightBigSquare(gc, width, height, pos);
 				Block.get(width, height);
 				grid.update();
 				grid.draw(gc, width, height);

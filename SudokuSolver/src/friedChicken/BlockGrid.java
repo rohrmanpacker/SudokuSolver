@@ -42,7 +42,7 @@ public class BlockGrid {
 						lose=false;
 				}
 				if(lose) {
-					
+					//TODO
 				}
 
 			}
@@ -92,7 +92,14 @@ public class BlockGrid {
 			grid[x][y]=new Block();
 		grid[x][y].set(value);
 	}
-
+	
+	public void highLightBigSquare(GraphicsContext gc, int width, int height,int[] pos) {
+		gc.save();
+		gc.setFill(Color.LIGHTGREEN);
+		gc.fillRect(pos[0]*width/9, pos[1]*height/9, width/9, height/9);
+		gc.restore();
+	}
+	
 	public void draw(GraphicsContext gc, int width, int height) {
 		//main lines
 		double lineWidth = gc.getLineWidth();
