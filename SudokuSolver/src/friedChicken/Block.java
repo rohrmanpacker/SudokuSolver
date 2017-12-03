@@ -18,8 +18,8 @@ public class Block{
 	}
 	public static ArrayList<Rectangle2D> get( int width, int height){
 		ArrayList<Rectangle2D> arr = new ArrayList<Rectangle2D>();
-		
-		
+
+
 		for(int x = 0; x<9;x++) {
 			for(int y=0;y<9;y++) {
 				arr.add(new Rectangle2D(x*width/9, y*height/9, width/9, height/9));
@@ -54,11 +54,13 @@ public class Block{
 	}
 
 	public void set(int value) {
-		for(int i = 0;i<possibleValues.length;i++)
-			possibleValues[i]=false;
-		this.value=value;
+		if(possibleValues[value-1]) {
+			for(int i = 0;i<possibleValues.length;i++)
+				possibleValues[i]=false;
+			this.value=value;
+		}
 	}
-	
+
 	public void setRandom() {
 		ArrayList<Integer> arr = new ArrayList<Integer>();
 		for(int i=0;i<possibleValues.length;i++) {
@@ -83,7 +85,7 @@ public class Block{
 				gc.strokeText(value+"", x+width/36, y+height/9-height/36);
 			}
 		}
-		
+
 		if (toReplace()&&!hasValue()) {
 			set(toReplaceValue());
 		}
@@ -92,7 +94,7 @@ public class Block{
 	private boolean toReplace() {
 		return numTrues()==1;
 	}
-	
+
 	private int numTrues() {
 		int sum= 0;
 		for(boolean b : possibleValues) {
@@ -102,7 +104,7 @@ public class Block{
 		}
 		return sum;
 	}
-	
+
 	private int toReplaceValue() {
 		if(toReplace()) {
 			for(int i=0;i<possibleValues.length;i++)
