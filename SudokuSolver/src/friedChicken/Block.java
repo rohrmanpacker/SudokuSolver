@@ -1,12 +1,8 @@
 package friedChicken;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.function.Function;
-import java.util.stream.IntStream;
 
 import javafx.geometry.Rectangle2D;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.text.Font;
 

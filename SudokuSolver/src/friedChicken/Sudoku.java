@@ -1,10 +1,8 @@
 package friedChicken;
 
-import java.util.ArrayList;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.*;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
